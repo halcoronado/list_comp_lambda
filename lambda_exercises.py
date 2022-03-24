@@ -83,19 +83,26 @@ print(search)
 search2 = list(filter(lambda num: 'abc' in num, original ))
 print(search2)
 
-''' 6)
+'''6)
 check whether a given string contains a capital letter, a lower case letter, a number and a minimum length of 8 characters.
 (This is like a password verification function, HINT: Python function 'any' may be useful)
 '''
 def password(n):
-    return any(lambda n: n.isdigit(), len(n)>=8, n.isupper() and n.islower())
+    check =[
+    lambda n: any(x.isupper() for x in n) ,
+        lambda n: any(x.islower() for x in n),
+        lambda n: any(x.isdigit() for x in n),
+        lambda n: len(n)>=7
+    ]
+    good = [x for x in [i(n) for i in check] if x != True]
+    if not good:
+        good.append('Good Password') 
+    return good
+x = str(input('Enter a password with a capital letter, a lower case letter, a number and a minimum length of 8 characters: '))
+print(password(x))
 
-
-pass1 = password('SpaceJam1')
-print(pass1)
-
-
-''' 7)
+''' 
+ 7)
 Write a Python program to sort a list of tuples using Lambda.
 
 # Original list of tuples:
@@ -106,3 +113,5 @@ original_scores = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sci
 '''
 original_scores = [('English', 88), ('Science', 90), ('Maths', 97), ('Social sciences', 82)]
 
+original_scores.sort(key= lambda r: r[1])
+print(original_scores)

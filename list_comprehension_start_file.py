@@ -69,8 +69,9 @@ print(fournumb)
 
 ## count how many times the word 'the' appears in the text file - 'sometext.txt'
 somefile = open('sometext.txt','r')
-split = [s for s in somefile ]
-print(split)
+split = somefile.read()
+the = [split.count('the')]
+print(the)
 ## Extract the numbers from the following phrase ##
 
 phrase = "In 1984 there were 13 instances of a protest with over 1000 people attending. On average there were 15 reported injuries at each " +"event, with about 3 or 4 that were classifled as serious per event."
